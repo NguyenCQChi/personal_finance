@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Panel } from './components';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 const Landing = () => {
@@ -12,63 +12,65 @@ const Landing = () => {
     height: '100vh',
     display: 'flex',
     flexDirection: 'row',
-  }
+  };
 
   const logoContainer = {
     padding: theme.spacing(5),
     position: 'relative',
-    display: 'inline-block'
-  }
+    display: 'inline-block',
+  };
 
   const imageContainer = {
     borderRadius: '20px',
     overflow: 'hidden',
-    display: 'block'
-  }
+    display: 'block',
+  };
 
   const descriptionContainer = {
     position: 'absolute',
-    top: 0, 
+    top: 0,
     left: 0,
     display: 'flex',
     flexDirection: 'column',
-    alignContent: 'space-between',
+    justifyContent: 'space-between',
     zIndex: 2,
-    padding: theme.spacing(10),
-    height: '100%'
-  }
+    padding: theme.spacing(15),
+    height: '100%', 
+  };
 
   const textWrapper = {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'between',
-    gap: '24px'
-  }
+    gap: theme.spacing(6),
+    color: 'white'
+  };
 
   const panelContainer = {
-    backgroundColor: '#000',
     flex: 1,
-    position: 'relative'
-  }
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  };
 
   return (
     <Box sx={pageContainer}>
       <Box sx={logoContainer}>
         <Box sx={imageContainer}>
-          <img 
-            src='images/illustration-authentication.svg'
-            alt='logo'
+          <img
+            src="images/illustration-authentication.svg"
+            alt="logo"
           />
         </Box>
         <Box sx={descriptionContainer}>
-          <img 
-            src='/images/logo-large.svg'
-            alt='logo'
-            style={{width: 'auto'}}
+          <img
+            src="/images/logo-large.svg"
+            alt="logo"
+            style={{ width: '150px' }}
           />
           <Box sx={textWrapper}>
-            <Box>Keep track of your money and save for your future</Box>
-            <Box>Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily.</Box>
+            <Typography variant='h1' >Keep track of your money and save for your future</Typography>
+            <Typography variant='body1' >Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily.</Typography>
           </Box>
         </Box>
       </Box>
@@ -76,7 +78,7 @@ const Landing = () => {
         <Panel />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default Landing;

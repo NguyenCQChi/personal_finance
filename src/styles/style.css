@@ -35,6 +35,12 @@ a {
   text-decoration: none;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

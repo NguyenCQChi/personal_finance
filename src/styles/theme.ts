@@ -4,7 +4,41 @@ import { createTheme } from '@mui/material/styles';
 let theme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: '"Public Sans", sans-serif'
+      fontFamily: '"Public Sans", sans-serif',
+      letterSpacing: '0px'
+    },
+    h1: {
+      fontSize: '32px',
+      lineHeight: '120%',
+      fontWeight: 'bold'
+    },
+    h2: {
+      fontSize: '20px',
+      lineHeight: '120%',
+      fontWeight: 'bold'
+    }, 
+    h3: {
+      fontSize: '16px',
+      lineHeight: '150%',
+      fontWeight: 'bold'
+    },
+    h4: {
+      fontSize: '14px',
+      lineHeight: '1500%',
+      fontWeight: 'bold'
+    }, 
+    h5: {
+      fontSize: '12px',
+      lineHeight: '150%',
+      fontWeight: 'bold'
+    },
+    body1: {
+      fontSize: '14px',
+      lineHeight: '150%'
+    },
+    body2: {
+      fontSize: '12px',
+      lineHeight: '150%'
     }
   },
   palette: {
