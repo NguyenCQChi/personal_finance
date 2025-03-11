@@ -13,6 +13,8 @@ type InputProps = {
 
 const Input = ({ form, field, onUpdateValue, placeholder = "", required = false } : InputProps ) => {
   const [ meta ] = useField(field.name);
+  const name = field.name;
+  const { errors, touched } = form;
   const [ change, setChange ] = useState(false);
   const [ didFocus, setDidFocus ] = useState(false);
   const handleFocus = () => setDidFocus(true);
@@ -23,6 +25,7 @@ const Input = ({ form, field, onUpdateValue, placeholder = "", required = false 
     if(value) {
       setChange(true);
       form.setFieldValue(field.name, value);
+      form.setTouched(field.name, true)
       if(onUpdateValue) {
         onUpdateValue();
       } else {
@@ -40,6 +43,7 @@ const Input = ({ form, field, onUpdateValue, placeholder = "", required = false 
       setShowFeedback(true)
     } else {
       setShowFeedback(false)
+      console.log(errors[name])
     }
   })
 
@@ -54,7 +58,7 @@ const Input = ({ form, field, onUpdateValue, placeholder = "", required = false 
           // label={placeholder}
           variant='outlined'
           error={showFeedback}
-          helperText={showFeedback && meta.error}
+          helperText={errors.name && touched.name ? errors[name] : ""}
           onChange={(event) => handleChange(event.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}

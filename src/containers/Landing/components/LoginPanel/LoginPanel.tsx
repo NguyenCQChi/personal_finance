@@ -11,10 +11,11 @@ import { Alert, Box, Typography } from '@mui/material';
 const LoginPanel = () => {
   const [ failToast, setFailToast ] = useState(false);
   const disableButton = { backgroundColor: '#B3B3B3' };
+  const mailReg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 
   const validationSchema = Yup.object({
-    email: Yup.string().required('Email is required').min(1, 'Email is required'),
+    email: Yup.string().required('Email is required').matches(mailReg, 'Email address is not valid'),
     password: Yup.string().required('Password is required').min(8, 'Password should be of minimum 8 characters length')
   })
 
@@ -84,6 +85,7 @@ const LoginPanel = () => {
       >
         {(formik) => {
           const { isValid, dirty } = formik;
+          console.log(formik)
 
           return (
             <FormBase className='form'>

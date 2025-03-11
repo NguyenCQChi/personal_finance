@@ -13,6 +13,8 @@ type InputProps = {
 
 const PasswordInput = ({ form, field, onUpdateValue, placeholder = "" } : InputProps ) => {
   const [ meta ] = useField(field.name);
+  // const { errors, touched } = form;
+  const name = field.name;
   const [ change, setChange ] = useState(false);
   const [ didFocus, setDidFocus ] = useState(false);
   const handleFocus = () => setDidFocus(true);
@@ -26,6 +28,7 @@ const PasswordInput = ({ form, field, onUpdateValue, placeholder = "" } : InputP
     if(value) {
       setChange(true);
       form.setFieldValue(field.name, value);
+      form.setTouched(field.name, true)
       if(onUpdateValue) {
         onUpdateValue()
       } else {
@@ -54,7 +57,7 @@ const PasswordInput = ({ form, field, onUpdateValue, placeholder = "" } : InputP
           required
           variant='outlined'
           error={showFeedback}
-          helperText={showFeedback && meta.error}
+          helperText={form.errors[name] && form.touched[name]}
           onChange={(event) => handleChange(event.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
