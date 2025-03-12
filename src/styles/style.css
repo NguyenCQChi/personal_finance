@@ -41,6 +41,30 @@ a {
   gap: 16px
 }
 
+.MuiListItem-root {
+  padding: 0;
+  background-color: transparent;
+}
+
+.MuiListItem-root:hover {
+  border-radius: 0 16px 16px 0;
+  background-color: white;
+}
+
+.MuiButtonBase-root {
+  display: flex;
+  flex-direction: row;
+  gap: 16px
+}
+
+.custom-icon {
+  transition: fill 0.3s ease; /* Smooth transition for color change */
+}
+
+.custom-icon:hover {
+  fill: red;  /* Color when hovered */
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -4,7 +4,7 @@ import LoginPanel from '../LoginPanel';
 import SignupPanel from '../SignupPanel';
 import { styled } from '@mui/material/styles';
 import { Button } from '@mui/base';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/material/styles';
 
 const Panel = () => {
   const [ logState, setLogState ] = useState(true); //logged in panel or sign up panel
