@@ -1,4 +1,4 @@
-const Budgets = () => {
+const Budgets = ({ data }) => {
   return (
     <div>Budgets</div>
   )

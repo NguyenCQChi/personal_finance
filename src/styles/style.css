@@ -46,24 +46,25 @@ a {
   background-color: transparent;
 }
 
-.MuiListItem-root:hover {
-  border-radius: 0 16px 16px 0;
-  background-color: white;
-}
-
 .MuiButtonBase-root {
   display: flex;
   flex-direction: row;
   gap: 16px
 }
 
-.custom-icon {
-  transition: fill 0.3s ease; /* Smooth transition for color change */
+svg path {
+  transition: all 0.3s ease; /* Smooth transition for color change */
 }
 
-.custom-icon:hover {
-  fill: red;  /* Color when hovered */
+svg path:hover {
+  fill: white;  /* Hover color */
+  transition: all 0.3s ease;
 }
+
+/* .MuiTypography-root #text-item {
+  font-size: 16px;
+  font-weight: bold
+} */
 
 /* @media (prefers-color-scheme: dark) {
   html {

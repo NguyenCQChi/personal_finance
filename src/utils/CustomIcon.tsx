@@ -2,22 +2,20 @@ import { ReactSVG } from 'react-svg';
 
 interface IconProps {
   src: string;
-  color?: string
+  color?: string;
 }
 
-const CustomIcon = ({ src, color = "grey" } : IconProps) => {
+const CustomIcon = ({ src, color = 'grey' }: IconProps) => {
   return (
     <ReactSVG
-      src={src} // Path to your SVG
+      src={src}
       beforeInjection={(svg) => {
         svg.querySelectorAll('path').forEach((path) => {
-          // path.setAttribute('fill', color)
-          path.classList.add('custom-icon')
-        })
+          path.setAttribute('fill', color);  // Dynamically set the fill color
+        });
       }}
-      className="custom-icon-container"
     />
   );
 };
 
-export default CustomIcon
+export default CustomIcon;

@@ -24,7 +24,7 @@ let theme = createTheme({
     },
     h4: {
       fontSize: '14px',
-      lineHeight: '1500%',
+      lineHeight: '150%',
       fontWeight: 'bold'
     }, 
     h5: {

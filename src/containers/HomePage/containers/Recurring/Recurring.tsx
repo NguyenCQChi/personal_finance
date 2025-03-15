@@ -1,4 +1,4 @@
-const Recurring = () => {
+const Recurring = ({ data }) => {
   return (
     <div>Recurring</div>
   )

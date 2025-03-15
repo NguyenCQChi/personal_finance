@@ -5,11 +5,12 @@ import { Button } from '@mui/base';
 import { Budgets, Overview, Pots, Recurring, Transactions } from './containers';
 import { useTheme, styled } from '@mui/material/styles';
 import CustomIcon from '../../utils/CustomIcon';
+import data from '../../../data.json';
 
 const HomePage = () => {
   const [ open, setOpen ] = useState(true);
   const [ value, setValue ] = useState(0);
-  const [ component, setComponent ] = useState(Overview)
+  const [ component, setComponent ] = useState(<Overview data={data} />)
   const theme = useTheme();
   const drawerWidth = '250px';
 
@@ -49,7 +50,7 @@ const HomePage = () => {
     },
   ]
 
-  const panels = [ <Overview key={0} />, <Transactions key={1} />, <Budgets key={2} />, <Pots key={3} />, <Recurring key={4} /> ];
+  const panels = [ <Overview key={0} data={data} />, <Transactions key={1} data={data.transactions} />, <Budgets key={2} data={data.budgets} />, <Pots key={3} data={data.pots} />, <Recurring key={4} data={data.transaction} /> ];
 
   const container = {
     display: 'flex',
@@ -104,7 +105,8 @@ const HomePage = () => {
   const mainContainer = {
     flexGrow: 1,
     height: '100vh',
-    padding: '32px 40px'
+    padding: '32px 40px',
+    backgroundColor: theme.palette.primary.light,
   }
 
   const tabContainer = {
@@ -122,6 +124,18 @@ const HomePage = () => {
   const miniItemStyle = {
     backgroundColor: '#fff',
     borderLeft: `6px solid ${theme.palette.green.main}`,
+    ':hover': {
+      backgroundColor: '#fff',
+      transition: "all 0.3s ease"
+    }
+  }
+
+  const itemStyle = {
+    backgroundColor: '#fff',
+    ':hover': {
+      backgroundColor: '#fff',
+      transition: "all 0.3s ease"
+    }
   }
 
   return (
@@ -144,11 +158,22 @@ const HomePage = () => {
                     return (
                       <ListItem key={index}>
                         <ListItemButton 
-                          sx={{...listItemStyle, ...(index === value ? { backgroundColor: '#fff' } : {} )}}
+                          sx={{...listItemStyle, ...(index === value ? itemStyle : {} )}}
                           onClick={(e) => handleChange(e, index)}
                         >
-                          <img src={item.icon} alt='list' />
-                          <ListItemText primary={item.name} />
+                          <CustomIcon
+                            src={item.icon}
+                            color={index === value ? 'black' : 'grey'}  // Dynamically change color
+                          />
+                          <ListItemText 
+                            primary={item.name} 
+                            sx={{color: index === value ? 'black' : 'grey',
+                              '& .MuiTypography-root': {
+                                fontSize: '16px',
+                                fontWeight: 'bold',
+                              }
+                            }} 
+                          />
                         </ListItemButton>
                       </ListItem>
                     )
@@ -163,13 +188,10 @@ const HomePage = () => {
                           sx={{...listItemStyle, ...(index === value ? miniItemStyle : {} )}}
                           onClick={(e) => handleChange(e, index)}  
                         >
-                          <div className="icon-container">
-                            {index === value ? (
-                              <CustomIcon src={item.icon} color='#000' />
-                            ) : (
-                              <CustomIcon src={item.icon}/>
-                            )}
-                          </div>
+                          <CustomIcon
+                            src={item.icon}
+                            color={index === value ? 'black' : 'grey'}  // Dynamically change color
+                          />
                         </ListItemButton>
                       </ListItem>
                     )
