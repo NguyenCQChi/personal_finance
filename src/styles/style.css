@@ -3,12 +3,37 @@
   --foreground: #171717;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+/* Regular */
+@font-face {
+  font-family: 'PublicSans';
+  src: url('/fonts/static/PublicSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'PublicSans';
+  src: url('/fonts/static/PublicSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Italic Variable */
+@font-face {
+  font-family: 'PublicSans';
+  src: url('/fonts/PublicSans-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Variable (Weight) */
+@font-face {
+  font-family: 'PublicSans';
+  src: url('/fonts/PublicSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;  /* Variable font weight range */
+  font-style: normal;
+}
 
 html,
 body {
@@ -60,14 +85,3 @@ svg path:hover {
   fill: white;  /* Hover color */
   transition: all 0.3s ease;
 }
-
-/* .MuiTypography-root #text-item {
-  font-size: 16px;
-  font-weight: bold
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
