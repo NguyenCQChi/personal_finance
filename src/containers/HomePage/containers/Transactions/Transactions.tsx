@@ -15,13 +15,13 @@ import { TransactionType } from '@src/types';
 import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
 import { useTheme } from '@mui/material/styles';
 import format_number from '@src/utils/format_number';
+import jsonData from '../../../../../data.json';
 
 
 const Transactions = ({ data } : { data: TransactionType[] }) => {
   const ROW_HEIGHT = 80;
   const sortSelection = ["Latest", "Oldest", "A to Z", "Z to A", "Highest", "Lowest"]
-  const categorySelection = ["All Transactions", "Entertainment", "Bills", "Groceries", "Dining Out", "Transportation", "Personal Care", "Education", "Lifestyle", "Shopping", "General" ]
-  
+  const categorySelection = jsonData.categories
   const apiRef = useGridApiRef();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -77,7 +77,6 @@ const Transactions = ({ data } : { data: TransactionType[] }) => {
         borderColor: theme.palette.grey.dark,
         borderWidth: '1px',
     }},
-    
   }
 
   const textColor = {

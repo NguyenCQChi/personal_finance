@@ -451,5 +451,22 @@
             "total": 531.00,
             "theme": "#826CB0"
         }
-    ]
+    ],
+    "categories": ["All Transactions", "Entertainment", "Bills", "Groceries", "Dining Out", "Transportation", "Personal Care", "Education", "Lifestyle", "Shopping", "General" ],
+    "colors": {
+        "Green": "#277C78",
+        "Yellow": "#F2CDAC",
+        "Cyan": "#82C9D7",
+        "Navy": "#626070",
+        "Red": "#C94736",
+        "Purple": "#AF81BA",
+        "Turquoise": "#597C7C",
+        "Brown": "#93674F",
+        "Magenta": "#934F6F",
+        "Blue": "#3F82B2",
+        "Navy_grey": "#97A0AC",
+        "Army_green": "#7F9161",
+        "Gold": "#CAB361",
+        "Orange": "#BE6C49"
+    }
 }

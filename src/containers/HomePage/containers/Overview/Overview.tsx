@@ -8,6 +8,7 @@ import { Button } from '@mui/base';
 import CustomIcon from '@src/utils/CustomIcon';
 import { DataType } from '@src/types';
 import { PieChart, Pie, Cell } from 'recharts';
+import { Transaction } from '@components';
 
 const Overview = ({ data } : { data : DataType }) => {
   const theme = useTheme();
@@ -175,24 +176,7 @@ const Overview = ({ data } : { data : DataType }) => {
               spacing={5}
               sx={{justifyContent: 'space-between', flex: 1}}
             >
-              {shortenTransaction.map((transaction, index) => {
-                return (
-                  <Paper key={index} sx={{display: 'flex', flexDirection: 'row', boxShadow: 'none', justifyContent: 'space-between'}}>
-                    <Box sx={{display: 'flex', flexDirection: 'row', gap: '16px', alignItems: 'center'}}>
-                      <Avatar alt={transaction.name} src={transaction.avatar} />
-                      <Typography variant='h4'>{transaction.name}</Typography>
-                    </Box>
-                    <Box sx={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
-                      {transaction.amount < 0 ? (
-                        <Typography variant="h4">{format_number(transaction.amount)}</Typography>
-                      ) : (
-                        <Typography variant="h4" sx={{color: theme.palette.green.main}}>+{format_number(transaction.amount)}</Typography>
-                      )}
-                      <Typography variant="body1">{format_date(transaction.date)}</Typography>
-                    </Box>
-                  </Paper>
-                )
-              })}  
+              {shortenTransaction.map((transaction, index) => <Transaction transaction={transaction} key={index} />)}  
             </Stack>
           </Box>
         </Box>

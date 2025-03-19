@@ -1,9 +1,8 @@
+import { useState } from 'react';
 import { 
   Box, 
   Typography,
-  Select,
-  MenuItem,
-  Modal 
+  Modal
 } from '@mui/material';
 import { Button } from '@mui/base';
 import { useTheme, styled } from '@mui/material/styles';
@@ -11,9 +10,11 @@ import { BudgetType, TransactionType } from '@src/types';
 import { PieChart, Pie, Cell } from 'recharts';
 import format_number from '@src/utils/format_number';
 import { Budget } from '@components';
+import { AddBudgetModal } from '@src/components/Modal';
 
 const Budgets = ({ data, data_transactions } : { data : BudgetType[], data_transactions : TransactionType[] }) => {
   const theme = useTheme();
+  const [ openAddModal, setOpenAddModal ] = useState(false);
 
   const flexColumn = {
     display: 'flex',
@@ -47,11 +48,14 @@ const Budgets = ({ data, data_transactions } : { data : BudgetType[], data_trans
     )
   )
 
+  const handleOpen = () => setOpenAddModal(true)
+  const handleClose = () => setOpenAddModal(false)
+
   return (
     <Box sx={{ ...flexColumn, gap: '32px', height: '100%' }}>
       <Box sx={{...flexRow, justifyContent: 'space-between', alignItems: 'center'}}>
         <Typography variant="h1">Budgets</Typography>
-        <CustomButton>
+        <CustomButton onClick={handleOpen}>
           <Typography variant="h4">+ Add New Budget</Typography>
         </CustomButton>
       </Box>
@@ -127,10 +131,20 @@ const Budgets = ({ data, data_transactions } : { data : BudgetType[], data_trans
           </Box>
         </Box>
         <Box sx={{...flexColumn, flex: 1, gap: '24px'}}>
-          {data.map((data_budget, index) => 
-            <Budget budget={data_budget} transactions={data_transactions} key={index} />
-          )}
+          {data.map((data_budget, index) => {
+            const budget_transactions = data_transactions.filter((transaction) => transaction.category === data_budget.category)
+            return (
+              <Budget budget={data_budget} transactions={budget_transactions} key={index} />
+            )
+          })}
         </Box>
+        <Modal 
+          open={openAddModal}
+          onClose={handleClose}
+          sx={{...flexRow, alignItems: 'center', justifyContent: 'center'}}
+        >
+          <AddBudgetModal onClose={handleClose} />
+        </Modal>
       </Box>
     </Box>
   )

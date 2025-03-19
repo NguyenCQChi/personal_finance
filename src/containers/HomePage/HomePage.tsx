@@ -50,7 +50,13 @@ const HomePage = () => {
     },
   ]
 
-  const panels = [ <Overview key={0} data={data} />, <Transactions key={1} data={data.transactions} />, <Budgets key={2} data={data.budgets} data_transactions={data.transactions} />, <Pots key={3} data={data.pots} />, <Recurring key={4} data={data.transactions} /> ];
+  const panels = [ 
+    <Overview key={0} data={data} />, 
+    <Transactions key={1} data={data.transactions} />, 
+    <Budgets key={2} data={data.budgets} data_transactions={data.transactions} />, 
+    <Pots key={3} data={data.pots} />, 
+    <Recurring key={4} data={data.transactions} /> 
+  ];
 
   const container = {
     display: 'flex',
